@@ -2,8 +2,10 @@ import React from "react";
 import { render } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/Books Registry/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App component", () => {
+  test("renders learn react link", () => {
+    const { getByText } = render(<App />);
+    const linkElement = getByText(/Book Registry/i);
+    expect(linkElement).toBeInTheDocument();
+  });
 });
