@@ -1,9 +1,30 @@
 .Book {
-  padding: 6px;
+  padding: 12px;
   margin: 4px;
   border-radius: 6px;
   font-size: 0.8rem;
   text-align: left;
   color: antiquewhite;
   background-color: #4a4a4a;
+  position: relative;
+}
+.Title {
+  font-size: 1.3rem;
+  padding-bottom: 6px;
+}
+.Details {
+  display: flex;
+  justify-content: space-between;
+}
+.Author {
+  color: #abc;
+}
+.HorizSeparator {
+  margin-left: 11px;
+  margin-right: 11px;
+  color: #a09f9d;
+}
+.Pages {
+  position: relative;
+  color: #a09f9d;
 }

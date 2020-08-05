@@ -23,11 +23,21 @@ const Book: React.FC<BookProps> = memo((props: BookProps) => {
   return (
     <Row className={styles.Book}>
       <Col>
-        {/* <div className={styles.Book}> */}
-        {`${details.book_author}, ${details.book_publication_city},
-    ${details.book_publication_country}, ${details.book_publication_year},
-    ${details.book_publication_city}, ${details.book_pages}, ${details.book_title}`}
-        {/* </div> */}
+        <div className={styles.Title}>{details.book_title}</div>
+        <span className={styles.Details}>
+          <span>
+            by <span className={styles.Author}>{details.book_author}</span>
+            <span className={styles.HorizSeparator}>|</span>
+            <span className={styles.PlaceTime}>
+              {details.book_publication_country},{" "}
+              {details.book_publication_city}, {details.book_publication_year}
+              <span className={styles.HorizSeparator}>|</span>
+              <span
+                className={styles.Pages}
+              >{`${details.book_pages} pages`}</span>
+            </span>
+          </span>
+        </span>
       </Col>
     </Row>
   );
