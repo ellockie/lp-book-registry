@@ -7,18 +7,24 @@ import "./App.css";
 
 function App() {
   const API_BASE_URL = "http://nyx.vima.ekt.gr:3000/api/books";
-  const ITEMS_PER_PAGE = 20;
+  const ITEMS_PER_PAGE = 10;
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [resultsCount, setResultsCount] = useState<number>(0);
   const [books, setBooks] = useState<BookDetails[]>([]);
+  const [searchPhrase, setSearchPhrase] = useState<string>("");
 
   useEffect(() => {
     fetch(API_BASE_URL, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         page: currentPage,
         itemsPerPage: ITEMS_PER_PAGE,
-        filters: [],
+        filters: searchPhrase
+          ? [{ type: "all", values: [...searchPhrase.split(" ")] }]
+          : [],
       }),
     })
       .then((results) => results.json())
