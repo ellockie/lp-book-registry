@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 
-import { Book, BookDetails, Paginator } from "./components";
+import { BookDetails, Paginator, Page } from "./components";
 
 import "./App.css";
 
@@ -35,20 +35,17 @@ function App() {
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, [currentPage]);
+  }, [currentPage, searchPhrase]);
 
   return (
     <div className="App">
       <header className="App-header">
         <Container>
           <h2>Book Registry</h2>
-          {books.map((book) => (
-            <Book key={book.id} details={book} />
-          ))}
-          <div>All results: {resultsCount}</div>
+          <Page books={books} />
           <Paginator
             currentPage={currentPage}
-            allPages={resultsCount}
+            allResults={resultsCount}
             itemsPerPage={ITEMS_PER_PAGE}
           />
         </Container>

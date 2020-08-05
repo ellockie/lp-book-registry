@@ -20,7 +20,6 @@ describe("<Book />", () => {
 
   test("It should mount", () => {
     expect(component.length).toBe(1);
-    console.log("component.text():", component.text());
   });
 
   test("It should contain the book's title", () => {
