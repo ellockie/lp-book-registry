@@ -1,0 +1,9 @@
+.Book {
+  padding: 6px;
+  margin: 4px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  text-align: left;
+  color: antiquewhite;
+  background-color: #4a4a4a;
+}

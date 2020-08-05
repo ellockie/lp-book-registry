@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 
+import { Book, BookDetails } from "./components";
 
 import "./App.css";
 
@@ -22,6 +23,7 @@ function App() {
     })
       .then((results) => results.json())
       .then((data) => {
+        setBooks(data.books);
         setResultsCount(data.count);
       })
       .catch((error) => {
@@ -34,6 +36,9 @@ function App() {
       <header className="App-header">
         <Container>
           <h2>Book Registry</h2>
+          {books.map((book) => (
+            <Book key={book.id} details={book} />
+          ))}
           <div>All results: {resultsCount}</div>
         </Container>
       </header>
