@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 
-import { Book, BookDetails } from "./components";
+import { Book, BookDetails, Paginator } from "./components";
 
 import "./App.css";
 
 function App() {
   const API_BASE_URL = "http://nyx.vima.ekt.gr:3000/api/books";
-  const ITEMS_PER_PAGE = 2;
+  const ITEMS_PER_PAGE = 20;
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [resultsCount, setResultsCount] = useState<number>(0);
   const [books, setBooks] = useState<BookDetails[]>([]);
@@ -40,6 +40,11 @@ function App() {
             <Book key={book.id} details={book} />
           ))}
           <div>All results: {resultsCount}</div>
+          <Paginator
+            currentPage={currentPage}
+            allPages={resultsCount}
+            itemsPerPage={ITEMS_PER_PAGE}
+          />
         </Container>
       </header>
     </div>
