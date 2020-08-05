@@ -1,13 +1,29 @@
 import React from "react";
-import { shallow, ShallowWrapper } from "enzyme";
+import { mount, ReactWrapper } from "enzyme";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+
 import Paginator from "./Paginator";
 
 describe("<Paginator />", () => {
-  let component: ShallowWrapper;
+  let component: ReactWrapper;
 
   beforeEach(() => {
-    component = shallow(
-      <Paginator currentPage={23} allResults={88} itemsPerPage={20} />
+    component = mount(
+      <Router>
+        <Switch>
+          <Route path="/pages/:page">
+            <Paginator currentPage={23} allResults={88} itemsPerPage={20} />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/pages/1" />
+          </Route>
+        </Switch>
+      </Router>
     );
   });
 
@@ -15,7 +31,7 @@ describe("<Paginator />", () => {
     expect(component.length).toBe(1);
   });
 
-  test("It should contain 'All results:' text", () => {
+  test("It should contain 'All results: 88 items' text", () => {
     expect(component.text().includes("All results: 88 items")).toBe(true);
   });
 });

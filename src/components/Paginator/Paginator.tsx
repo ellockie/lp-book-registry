@@ -1,6 +1,7 @@
 import React, { memo } from "react";
-import styles from "./Paginator.module.css";
 import Pagination from "react-bootstrap/Pagination";
+
+import styles from "./Paginator.module.css";
 
 interface PaginatorProps {
   currentPage: number;
@@ -10,6 +11,7 @@ interface PaginatorProps {
 
 const Paginator: React.FC<PaginatorProps> = memo((props: PaginatorProps) => {
   const { currentPage, allResults, itemsPerPage } = props;
+
   return (
     <>
       <div>All results: {allResults} items</div>

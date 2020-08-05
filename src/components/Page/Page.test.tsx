@@ -1,27 +1,37 @@
 import React from "react";
-import { shallow, ShallowWrapper } from "enzyme";
+import { mount, ReactWrapper } from "enzyme";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+
 import Page from "./Page";
-import { BookDetails } from "..";
 
 describe("<Page />", () => {
-  let component: ShallowWrapper;
-
-  const mockBookDetails: BookDetails = {
-    book_author: ["abc", "Second author's name"],
-    book_pages: 23,
-    book_publication_city: "cde",
-    book_publication_country: "def",
-    book_publication_year: 1977,
-    book_title: "book_title",
-    id: 1,
-  };
-  const books = [mockBookDetails, mockBookDetails];
+  let component: ReactWrapper;
 
   beforeEach(() => {
-    component = shallow(<Page books={books} />);
+    component = mount(
+      <Router>
+        <Switch>
+          <Route path="/pages/:page">
+            <Page searchPhrase="" />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/pages/1" />
+          </Route>
+        </Switch>
+      </Router>
+    );
   });
 
   test("It should mount", () => {
     expect(component.length).toBe(1);
+  });
+
+  test("It should contain 'All results: ' text", () => {
+    expect(component.text().includes("All results: ")).toBe(true);
   });
 });
