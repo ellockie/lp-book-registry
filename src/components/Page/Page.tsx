@@ -3,14 +3,12 @@ import { useParams } from "react-router-dom";
 
 import { Book, BookDetails, Paginator } from "..";
 
-import styles from "./Page.module.scss";
+const API_BASE_URL = "http://nyx.vima.ekt.gr:3000/api/books";
+const ITEMS_PER_PAGE = 5;
 
 interface PageProps {
   searchPhrase: string;
 }
-
-const API_BASE_URL = "http://nyx.vima.ekt.gr:3000/api/books";
-const ITEMS_PER_PAGE = 10;
 
 const Page: React.FC<PageProps> = memo((props: PageProps) => {
   const { searchPhrase } = props;
@@ -48,7 +46,7 @@ const Page: React.FC<PageProps> = memo((props: PageProps) => {
     (currentPage - 1) * ITEMS_PER_PAGE + index + 1;
 
   return (
-    <div className={styles.Page}>
+    <div>
       {books.map((book, index) => (
         <Book key={book.id} details={book} position={getPosition(index)} />
       ))}
