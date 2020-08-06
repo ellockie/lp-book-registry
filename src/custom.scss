@@ -11,4 +11,5 @@ $theme-colors: (
 
 body {
   color: theme-color();
+  overflow-y: scroll;
 }

@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 
 import { Book, BookDetails, Paginator } from "..";
 
+import styles from "./Page.module.scss";
+
 const API_BASE_URL = "http://nyx.vima.ekt.gr:3000/api/books";
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 10;
 
 interface PageProps {
   searchPhrase: string;
@@ -47,6 +49,7 @@ const Page: React.FC<PageProps> = memo((props: PageProps) => {
 
   return (
     <div>
+      {!books.length && <div className={styles.Loader}>Loading...</div>}
       {books.map((book, index) => (
         <Book key={book.id} details={book} position={getPosition(index)} />
       ))}

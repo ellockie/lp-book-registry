@@ -79,7 +79,9 @@ const Paginator: React.FC<PaginatorProps> = memo((props: PaginatorProps) => {
   return (
     <div className={styles.PaginatorContainer}>
       <div className={styles.AllResults}>{allResults} results</div>
-      <Pagination className={styles.Paginator}>{items}</Pagination>
+      {currentPage <= maxPages && (
+        <Pagination className={styles.Paginator}>{items}</Pagination>
+      )}
     </div>
   );
 });

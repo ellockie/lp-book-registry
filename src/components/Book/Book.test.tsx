@@ -15,7 +15,7 @@ describe("<Book />", () => {
   };
 
   beforeEach(() => {
-    component = shallow(<Book details={mockBookDetails} />);
+    component = shallow(<Book details={mockBookDetails} position={23} />);
   });
 
   test("It should mount", () => {
