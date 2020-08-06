@@ -15,7 +15,8 @@ const ITEMS_PER_PAGE = 5;
 const Page: React.FC<PageProps> = memo((props: PageProps) => {
   const { searchPhrase } = props;
   // get current page from the router hook:
-  const { page: currentPage } = useParams();
+  const { page } = useParams();
+  const currentPage: number = +page;
   const [resultsCount, setResultsCount] = useState<number>(0);
   const [books, setBooks] = useState<BookDetails[]>([]);
 

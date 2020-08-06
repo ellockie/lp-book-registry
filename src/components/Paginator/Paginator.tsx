@@ -9,31 +9,73 @@ interface PaginatorProps {
   itemsPerPage: number;
 }
 
+function getPaginatorFront(items: JSX.Element[], currentPage: number) {
+  if (currentPage < 4) return;
+  items.push(
+    <Pagination.Item key={1} href={`/pages/${1}`}>
+      {1}
+    </Pagination.Item>
+  );
+  items.push(<Pagination.Ellipsis disabled key="...1" />);
+}
+
+function getPaginatorCore(
+  items: JSX.Element[],
+  currentPage: number,
+  maxPages: number
+) {
+  for (
+    let index = Math.max(currentPage - 2, 1);
+    index <= Math.min(currentPage + 2, maxPages);
+    index++
+  ) {
+    items.push(
+      <Pagination.Item
+        key={index}
+        active={index === currentPage}
+        href={`/pages/${index}`}
+      >
+        {index}
+      </Pagination.Item>
+    );
+  }
+}
+
+function getPaginatorEnd(
+  items: JSX.Element[],
+  currentPage: number,
+  maxPages: number
+) {
+  if (currentPage >= maxPages - 2) return;
+  items.push(<Pagination.Ellipsis disabled key="...2" />);
+  items.push(
+    <Pagination.Item key={maxPages} href={`/pages/${maxPages}`}>
+      {maxPages}
+    </Pagination.Item>
+  );
+}
+
+function buildPaginator(
+  items: JSX.Element[],
+  currentPage: number,
+  maxPages: number
+) {
+  getPaginatorFront(items, currentPage);
+  getPaginatorCore(items, currentPage, maxPages);
+  getPaginatorEnd(items, currentPage, maxPages);
+}
+
 const Paginator: React.FC<PaginatorProps> = memo((props: PaginatorProps) => {
   const { currentPage, allResults, itemsPerPage } = props;
+  if (!allResults) return null;
+  const maxPages: number = Math.floor(allResults / itemsPerPage);
+  const items: JSX.Element[] = [];
+  buildPaginator(items, currentPage, maxPages);
 
   return (
     <>
       <div>All results: {allResults} items</div>
-      <Pagination className={styles.Paginator}>
-        <Pagination.First />
-        <Pagination.Prev />
-        <Pagination.Item>{1}</Pagination.Item>
-        <Pagination.Ellipsis />
-
-        <Pagination.Item>{10}</Pagination.Item>
-        <Pagination.Item>{11}</Pagination.Item>
-        <Pagination.Item active>{currentPage}</Pagination.Item>
-        <Pagination.Item>{13}</Pagination.Item>
-        <Pagination.Item disabled>{14}</Pagination.Item>
-
-        <Pagination.Ellipsis />
-        <Pagination.Item>
-          {Math.ceil(allResults / itemsPerPage)}
-        </Pagination.Item>
-        <Pagination.Next />
-        <Pagination.Last />
-      </Pagination>
+      <Pagination className={styles.Paginator}>{items}</Pagination>
     </>
   );
 });
