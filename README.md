@@ -21,8 +21,10 @@ Lukasz Przewlocki
 
 ## TODO
 
-- more and more robust unit tests
+- filter functionality at the UI level (already supported in the code)
+- more unit tests, more robust
 - smoother transitions between pages
+- error messages in the UI
 - better styling
 
 ## Available Scripts
