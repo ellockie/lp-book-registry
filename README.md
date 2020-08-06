@@ -21,8 +21,9 @@ Lukasz Przewlocki
 
 ## TODO
 
-- more visual effects
-- more unit tests
+- more and more robust unit tests
+- smoother transitions between pages
+- better styling
 
 ## Available Scripts
 
