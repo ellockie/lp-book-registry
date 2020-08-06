@@ -72,7 +72,7 @@ function buildPaginator(
 const Paginator: React.FC<PaginatorProps> = memo((props: PaginatorProps) => {
   const { currentPage, allResults, itemsPerPage } = props;
   if (!allResults) return null;
-  const maxPages: number = Math.floor(allResults / itemsPerPage);
+  const maxPages: number = Math.ceil(allResults / itemsPerPage);
   const items: JSX.Element[] = [];
   buildPaginator(items, currentPage, maxPages);
 
