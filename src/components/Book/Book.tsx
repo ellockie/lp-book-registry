@@ -26,7 +26,10 @@ const Book: React.FC<BookProps> = memo((props: BookProps) => {
       <Col>
         <div className={styles.Title}>{details.book_title}</div>
         <span className={styles.Details}>
-          by <span className={styles.Author}>{details.book_author}</span>
+          by{" "}
+          <span className={styles.Author}>
+            {details.book_author.join(", ")}
+          </span>
           <span className={styles.HorizSeparator}>|</span>
           <span className={styles.PlaceTime}>
             {details.book_publication_country}, {details.book_publication_city},{" "}
