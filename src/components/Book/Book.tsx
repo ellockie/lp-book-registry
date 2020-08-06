@@ -16,14 +16,16 @@ export interface BookDetails {
 
 interface BookProps {
   details: BookDetails;
+  position: number;
 }
 
 const Book: React.FC<BookProps> = memo((props: BookProps) => {
-  const { details } = props;
+  const { details, position } = props;
 
   return (
     <Row className={styles.Book}>
       <Col>
+        <div className={styles.ResultNumber}>{position}. </div>
         <div className={styles.Title}>{details.book_title}</div>
         <span className={styles.Details}>
           by{" "}

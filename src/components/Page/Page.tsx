@@ -44,10 +44,13 @@ const Page: React.FC<PageProps> = memo((props: PageProps) => {
       });
   }, [currentPage, searchPhrase]);
 
+  const getPosition = (index: number) =>
+    (currentPage - 1) * ITEMS_PER_PAGE + index + 1;
+
   return (
     <div className={styles.Page}>
-      {books.map((book) => (
-        <Book key={book.id} details={book} />
+      {books.map((book, index) => (
+        <Book key={book.id} details={book} position={getPosition(index)} />
       ))}
       <Paginator
         currentPage={currentPage}
