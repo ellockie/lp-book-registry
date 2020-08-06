@@ -1,0 +1,28 @@
+@import "../../custom.scss";
+
+.PaginatorContainer {
+  border-top: 1px solid $ternary;
+}
+
+.AllResults {
+  padding: 24px;
+}
+
+.Paginator {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 64px;
+
+  a {
+    background-color: rgba(202, 224, 211, 0.1);
+    border: 1px solid rgba(29, 120, 116, 0.3);
+  }
+}
+
+.Ellipsis {
+  border: 1px solid rgba(29, 120, 116, 0.3);
+  span {
+    background-color: rgba(202, 224, 211, 0.1) !important;
+    border: none;
+  }
+}

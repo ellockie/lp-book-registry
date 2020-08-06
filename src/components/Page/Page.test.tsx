@@ -28,10 +28,11 @@ describe("<Page />", () => {
   });
 
   test("It should mount", () => {
+    console.log("component.text()", component.text());
     expect(component.length).toBe(1);
   });
 
-  test("It should contain 'All results: ' text", () => {
-    expect(component.text().includes("All results: ")).toBe(true);
+  test("It shouldn't render any text (sync mode)", () => {
+    expect(component.text().length).toBe(0);
   });
 });

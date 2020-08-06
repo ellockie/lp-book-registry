@@ -1,30 +1,35 @@
+@import "../../custom.scss";
+
 .Book {
   padding: 12px;
   margin: 4px;
-  border-radius: 6px;
   font-size: 0.8rem;
   text-align: left;
-  color: antiquewhite;
-  background-color: #4a4a4a;
   position: relative;
+  border-top: 1px solid $ternary;
 }
+
 .Title {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   padding-bottom: 6px;
 }
+
 .Details {
-  display: flex;
-  justify-content: space-between;
+  color: $secondary;
 }
+
 .Author {
-  color: #abc;
+  padding-left: 5px;
+  color: $primary;
 }
+
 .HorizSeparator {
   margin-left: 11px;
   margin-right: 11px;
-  color: #a09f9d;
+  color: $ternary;
 }
+
 .Pages {
   position: relative;
-  color: #a09f9d;
+  color: $ternary;
 }

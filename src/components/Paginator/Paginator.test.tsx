@@ -32,6 +32,6 @@ describe("<Paginator />", () => {
   });
 
   test("It should contain 'All results: 88 items' text", () => {
-    expect(component.text().includes("All results: 88 items")).toBe(true);
+    expect(component.text().includes("88 results")).toBe(true);
   });
 });

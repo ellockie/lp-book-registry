@@ -9,7 +9,7 @@ import {
 
 import { Page } from "./components";
 
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const [searchPhrase] = useState<string>("");
@@ -19,7 +19,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Container>
-            <h2>Book Registry</h2>
+            <h1>Book Registry</h1>
             <Switch>
               <Route path="/pages/:page">
                 <Page searchPhrase={searchPhrase} />

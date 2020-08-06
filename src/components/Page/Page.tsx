@@ -3,18 +3,18 @@ import { useParams } from "react-router-dom";
 
 import { Book, BookDetails, Paginator } from "..";
 
-import styles from "./Page.module.css";
+import styles from "./Page.module.scss";
 
 interface PageProps {
   searchPhrase: string;
 }
 
 const API_BASE_URL = "http://nyx.vima.ekt.gr:3000/api/books";
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 10;
 
 const Page: React.FC<PageProps> = memo((props: PageProps) => {
   const { searchPhrase } = props;
-  // get current page from the router hook:
+  // Get current page from the router hook:
   const { page } = useParams();
   const currentPage: number = +page;
   const [resultsCount, setResultsCount] = useState<number>(0);

@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import Pagination from "react-bootstrap/Pagination";
 
-import styles from "./Paginator.module.css";
+import styles from "./Paginator.module.scss";
 
 interface PaginatorProps {
   currentPage: number;
@@ -16,7 +16,9 @@ function getPaginatorFront(items: JSX.Element[], currentPage: number) {
       {1}
     </Pagination.Item>
   );
-  items.push(<Pagination.Ellipsis disabled key="...1" />);
+  items.push(
+    <Pagination.Ellipsis className={styles.Ellipsis} disabled key="...1" />
+  );
 }
 
 function getPaginatorCore(
@@ -47,7 +49,9 @@ function getPaginatorEnd(
   maxPages: number
 ) {
   if (currentPage >= maxPages - 2) return;
-  items.push(<Pagination.Ellipsis disabled key="...2" />);
+  items.push(
+    <Pagination.Ellipsis className={styles.Ellipsis} disabled key="...2" />
+  );
   items.push(
     <Pagination.Item key={maxPages} href={`/pages/${maxPages}`}>
       {maxPages}
@@ -73,10 +77,10 @@ const Paginator: React.FC<PaginatorProps> = memo((props: PaginatorProps) => {
   buildPaginator(items, currentPage, maxPages);
 
   return (
-    <>
-      <div>All results: {allResults} items</div>
+    <div className={styles.PaginatorContainer}>
+      <div className={styles.AllResults}>{allResults} results</div>
       <Pagination className={styles.Paginator}>{items}</Pagination>
-    </>
+    </div>
   );
 });
 
